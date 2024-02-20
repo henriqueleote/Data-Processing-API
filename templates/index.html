@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ processed_data.name }}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 200px
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    .centerCard {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .typeList {
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+</style>
+
+<body>
+    <h1>{{ processed_data.name }} Energy Data</h1>
+    <div class="centerCard">
+        <ul>
+            {% if processed_data.total_energy_demand %}
+            <li>
+                <strong>Total Energy Demand:</strong> {{ processed_data.total_energy_demand }}
+            </li>
+            {% endif %}
+            {% if processed_data.energy_output_reduction %}
+            <li>
+                <strong>Energy Output Reduction:</strong> {{ processed_data.energy_output_reduction }}%
+            </li>
+            {% endif %}
+            {% if processed_data.energy_demand %}
+            <li>
+                <strong>Energy Demand by Type:</strong>
+                <ul class="typeList">
+                    {% if processed_data.energy_demand.heat %}
+                    <li><strong>Heat:</strong> {{ processed_data.energy_demand.heat }}</li>
+                    {% endif %}
+                    {% if processed_data.energy_demand.water %}
+                    <li><strong>Water:</strong> {{ processed_data.energy_demand.water }}</li>
+                    {% endif %}
+                    {% if processed_data.energy_demand.light %}
+                    <li><strong>Light:</strong> {{ processed_data.energy_demand.light }}</li>
+                    {% endif %}
+                    {% if processed_data.energy_demand.cool %}
+                    <li><strong>Cool:</strong> {{ processed_data.energy_demand.cool }}</li>
+                    {% endif %}
+                </ul>
+            </li>
+            {% endif %}
+
+        </ul>
+    </div>
+</body>
+</body>
+
+</html>

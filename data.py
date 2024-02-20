@@ -69,7 +69,6 @@ class DataAccessObject:
                         'system': system_name,
                         'value': item["energy_demand"]
                     }
-
         return demand
 
     def get_asset_energy_output(self, asset_id):

@@ -37,5 +37,5 @@ class EnergyProcessor:
         return {    # Return values to be displayed
             "energy_demand": reduced_demand,
             "total_energy_demand": total_demand,
-            "energy_output_reduction": energy_output_reduction
+            "energy_output_reduction": f"{energy_output_reduction:.2f}"
         }

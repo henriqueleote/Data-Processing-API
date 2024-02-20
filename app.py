@@ -1,5 +1,5 @@
 #imports
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from data import DataAccessObject
 from processor import EnergyProcessor
 import logging
@@ -33,7 +33,8 @@ def get_asset_energy_data(asset_id):
         asset_data = dao.get_asset_data(asset_id)
         processed_data = processor.calculate_reduced_demand(asset_data)
         processed_data["name"] = asset_data["name"]
-        return jsonify(processed_data)
+        #return jsonify(processed_data) # return as json
+        return render_template("index.html", processed_data=processed_data) #return as HTML
 
     except (KeyError, ValueError) as e:
         logging.error(f"Error processing asset {asset_id}: {e}")    # Log error
